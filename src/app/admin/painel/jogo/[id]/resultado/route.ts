@@ -1,12 +1,18 @@
 import { NextResponse } from "next/server";
 import { supabase } from "@/lib/supabaseClient";
 
-type ParamsProps =
-  | Promise<{ params: { id: string } }>
-  | { params: { id: string } };
-export async function POST(request: Request, props: ParamsProps) {
-  const awaited = props instanceof Promise ? await props : props;
-  const { params } = awaited;
+export async function POST(request: Request) {
+  // Extrair o id da URL manualmente
+  const url = new URL(request.url);
+  const pathParts = url.pathname.split("/").filter(Boolean);
+  // Pega o penúltimo segmento, que é o id do jogo
+  const id = pathParts[pathParts.length - 2];
+  if (!id) {
+    return NextResponse.json(
+      { error: "ID do jogo não informado." },
+      { status: 400 }
+    );
+  }
   const formData = await request.formData();
 
   // Converter corretamente os valores vindos do formData
@@ -52,17 +58,10 @@ export async function POST(request: Request, props: ParamsProps) {
     melhor_jogador,
   };
 
-  if (!params.id) {
-    return NextResponse.json(
-      { error: "ID do jogo não informado." },
-      { status: 400 }
-    );
-  }
-
   const { error } = await supabase
     .from("jogos")
     .update(updateData)
-    .eq("id", params.id);
+    .eq("id", id);
 
   if (error) {
     return NextResponse.json({ error: error.message }, { status: 500 });
