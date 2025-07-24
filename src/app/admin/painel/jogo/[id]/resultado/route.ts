@@ -69,5 +69,5 @@ export async function POST(request: Request) {
 
   // Redireciona de volta para o painel (URL absoluta)
   const origin = request.headers.get("origin") || "http://localhost:3000";
-  return NextResponse.redirect(origin + "/admin/painel");
+  return NextResponse.redirect(origin + "/admin/painel", 303);
 }
