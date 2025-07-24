@@ -1,7 +1,39 @@
 {
   "time": {
     "nome": "Botafogo",
-    "escudo": "https://logodetimes.com/times/botafogo/logo-botafogo-256.png"
+    "escudo": "https://logodetimes.com/times/botafogo/logo-botafogo-256.png",
+    "elenco": [
+      { "posicao": "Goleiro", "nome": "John Victor" },
+      { "posicao": "Goleiro", "nome": "Raul" },
+      { "posicao": "Goleiro", "nome": "Joel Loor" },
+      { "posicao": "Goleiro", "nome": "Leo Linck" },
+      { "posicao": "Defensor", "nome": "Mateo Ponte" },
+      { "posicao": "Defensor", "nome": "Vitinho" },
+      { "posicao": "Defensor", "nome": "Alexander Barboza" },
+      { "posicao": "Defensor", "nome": "Bastos" },
+      { "posicao": "Defensor", "nome": "Alex Telles" },
+      { "posicao": "Defensor", "nome": "Fernando Marçal" },
+      { "posicao": "Defensor", "nome": "Kaio Pantaleão" },
+      { "posicao": "Defensor", "nome": "David Ricardo" },
+      { "posicao": "Defensor", "nome": "Cuiabano" },
+      { "posicao": "Meio-campista", "nome": "Allan" },
+      { "posicao": "Meio-campista", "nome": "Marlon Freitas" },
+      { "posicao": "Meio-campista", "nome": "Kauê" },
+      { "posicao": "Meio-campista", "nome": "Santiago Rodríguez" },
+      { "posicao": "Meio-campista", "nome": "Álvaro Montoro" },
+      { "posicao": "Meio-campista", "nome": "Danilo" },
+      { "posicao": "Meio-campista", "nome": "Newton" },
+      { "posicao": "Meio-campista", "nome": "Jordan Barrera" },
+      { "posicao": "Atacante", "nome": "Savarino" },
+      { "posicao": "Atacante", "nome": "Artur" },
+      { "posicao": "Atacante", "nome": "Matheus Martins" },
+      { "posicao": "Atacante", "nome": "Nathan Fernandes" },
+      { "posicao": "Atacante", "nome": "Kayke" },
+      { "posicao": "Atacante", "nome": "Joaquín Correa" },
+      { "posicao": "Atacante", "nome": "Gonzalo Mastriani" },
+      { "posicao": "Atacante", "nome": "Jeffinho" },
+      { "posicao": "Atacante", "nome": "Arthur Cabral" }
+    ]
   },
   "jogos": [
     {
