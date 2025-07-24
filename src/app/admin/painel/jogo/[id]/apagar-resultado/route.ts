@@ -1,11 +1,11 @@
 import { NextResponse } from "next/server";
 import { supabase } from "@/lib/supabaseClient";
 
-export async function POST(
-  request: Request,
-  { params }: { params: { id: string } }
-) {
-  if (!params.id) {
+export async function POST(request: Request) {
+  // Extrair o id da URL
+  const url = new URL(request.url);
+  const id = url.pathname.split("/").filter(Boolean).pop();
+  if (!id) {
     return NextResponse.json(
       { error: "ID do jogo não informado." },
       { status: 400 }
@@ -22,7 +22,7 @@ export async function POST(
       pior_jogador: null,
       melhor_jogador: null,
     })
-    .eq("id", params.id);
+    .eq("id", id);
 
   if (error) {
     return NextResponse.json({ error: error.message }, { status: 500 });
