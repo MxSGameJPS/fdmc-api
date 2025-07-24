@@ -23,10 +23,14 @@ type Jogo = {
 };
 
 export default async function PainelPage() {
-  const { data: jogos, error } = await supabase
-    .from("jogos")
-    .select("*")
-    .order("data", { ascending: true });
+  const { data: jogos, error } =
+    (await supabase
+      .from("jogos")
+      .select("*")
+      .order("data", { ascending: true })
+      .throwOnError()
+      // @ts-ignore
+      .single?.({ cache: "no-store" })) ?? {};
 
   if (error)
     return (
