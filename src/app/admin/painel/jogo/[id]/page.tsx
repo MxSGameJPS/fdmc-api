@@ -4,7 +4,9 @@ import styles from "../../painel.module.css";
 import Image from "next/image";
 import VoltarBtn from "./VoltarBtn";
 
-export default async function JogoPage({ params }: { params: { id: string } }) {
+type PageProps = { params: { id: string } };
+
+export default async function JogoPage({ params }: PageProps) {
   // Buscar o jogo pelo id na tabela do Supabase
   const { data: jogo, error } = await supabase
     .from("jogos")
@@ -151,7 +153,7 @@ export default async function JogoPage({ params }: { params: { id: string } }) {
                 marginTop: 8,
               }}
             >
-              {elenco.map((j, idx) => (
+              {elenco.map((j) => (
                 <label
                   key={j.nome}
                   style={{ display: "flex", alignItems: "center", gap: 8 }}
@@ -176,7 +178,7 @@ export default async function JogoPage({ params }: { params: { id: string } }) {
                 marginTop: 8,
               }}
             >
-              {elenco.map((j, idx) => (
+              {elenco.map((j) => (
                 <label
                   key={j.nome + "-pior"}
                   style={{ display: "flex", alignItems: "center", gap: 8 }}
@@ -203,7 +205,7 @@ export default async function JogoPage({ params }: { params: { id: string } }) {
                 marginTop: 8,
               }}
             >
-              {elenco.map((j, idx) => (
+              {elenco.map((j) => (
                 <label
                   key={j.nome + "-melhor"}
                   style={{ display: "flex", alignItems: "center", gap: 8 }}
