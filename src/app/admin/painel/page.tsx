@@ -23,19 +23,17 @@ type Jogo = {
 };
 
 export default async function PainelPage() {
-  const { data: jogos, error } =
-    (await supabase
-      .from("jogos")
-      .select("*")
-      .order("data", { ascending: true })
-      .throwOnError()
-      // @ts-ignore
-      .maybeSingle?.({ cache: "no-store" }) ?? {};
+  const { data: jogos, error } = await supabase
+    .from("jogos")
+    .select("*")
+    .order("data", { ascending: true })
+    .throwOnError();
 
   if (error)
     return (
       <div style={{ color: "#b00", textAlign: "center", marginTop: 40 }}>
-        Erro ao carregar jogos: {error.message}
+        Erro ao carregar jogos:{" "}
+        {(error as { message?: string })?.message ?? String(error)}
       </div>
     );
   if (!jogos || jogos.length === 0)
