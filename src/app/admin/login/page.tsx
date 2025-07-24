@@ -25,7 +25,7 @@ function LoginPageContent() {
         )}
         <form
           method="POST"
-          action="/admin/login/api"
+          action="/api/login"
           className={styles["login-form"]}
         >
           <div className={styles["login-form-group"]}>
