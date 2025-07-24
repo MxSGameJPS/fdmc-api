@@ -7,47 +7,42 @@ export async function POST(
 ) {
   const formData = await request.formData();
 
-  let resultado_mandante = formData.get("resultado_mandante");
-  let resultado_visitante = formData.get("resultado_visitante");
+  // Converter corretamente os valores vindos do formData
+  const resultado_mandanteRaw = formData.get("resultado_mandante");
+  const resultado_visitanteRaw = formData.get("resultado_visitante");
+  const gols_marcadosRaw = formData.getAll("gols_marcados");
+  const pior_jogadorRaw = formData.get("pior_jogador");
+  const melhor_jogadorRaw = formData.get("melhor_jogador");
 
-  // Novos campos do formulário
-  // Pega todos os checkboxes marcados (gols_marcados pode ser múltiplo)
-  let gols_marcados = formData.getAll("gols_marcados");
-  // Radio para pior e melhor
-  let pior_jogador = formData.get("pior_jogador");
-  let melhor_jogador = formData.get("melhor_jogador");
-
-  // Converter para number ou null
-  resultado_mandante =
-    resultado_mandante === null ||
-    resultado_mandante === undefined ||
-    resultado_mandante === ""
+  const resultado_mandante: number | null =
+    resultado_mandanteRaw === null || resultado_mandanteRaw === ""
       ? null
-      : Number(resultado_mandante);
-  resultado_visitante =
-    resultado_visitante === null ||
-    resultado_visitante === undefined ||
-    resultado_visitante === ""
+      : Number(resultado_mandanteRaw);
+  const resultado_visitante: number | null =
+    resultado_visitanteRaw === null || resultado_visitanteRaw === ""
       ? null
-      : Number(resultado_visitante);
+      : Number(resultado_visitanteRaw);
 
-  // Se não marcar nenhum, salva null
-  if (gols_marcados.length === 0) gols_marcados = null;
-  if (
-    pior_jogador === null ||
-    pior_jogador === undefined ||
-    pior_jogador === ""
-  )
-    pior_jogador = null;
-  if (
-    melhor_jogador === null ||
-    melhor_jogador === undefined ||
-    melhor_jogador === ""
-  )
-    melhor_jogador = null;
+  // Converter array de FormDataEntryValue para string[]
+  const gols_marcados: string[] | null =
+    gols_marcadosRaw.length === 0
+      ? null
+      : gols_marcadosRaw.map((v) => (typeof v === "string" ? v : ""));
 
-  // Forçar tipo para any para evitar erro de tipagem do FormDataEntryValue
-  const updateData: any = {
+  const pior_jogador: string | null =
+    !pior_jogadorRaw ||
+    typeof pior_jogadorRaw !== "string" ||
+    pior_jogadorRaw === ""
+      ? null
+      : pior_jogadorRaw;
+  const melhor_jogador: string | null =
+    !melhor_jogadorRaw ||
+    typeof melhor_jogadorRaw !== "string" ||
+    melhor_jogadorRaw === ""
+      ? null
+      : melhor_jogadorRaw;
+
+  const updateData = {
     resultado_mandante,
     resultado_visitante,
     gols_marcados,

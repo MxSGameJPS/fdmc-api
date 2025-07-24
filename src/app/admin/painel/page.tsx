@@ -4,6 +4,24 @@ import Link from "next/link";
 import { supabase } from "@/lib/supabaseClient";
 import LogoutBtn from "./LogoutBtn";
 
+type Jogo = {
+  id: number;
+  data: string;
+  hora: string;
+  mandante: string;
+  visitante: string;
+  campeonato: string;
+  rodada: string;
+  escudo_mandante: string;
+  escudo_visitante: string;
+  local: string;
+  resultado_mandante: number | null;
+  resultado_visitante: number | null;
+  gols_marcados: string[] | null;
+  melhor_jogador: string | null;
+  pior_jogador: string | null;
+};
+
 export default async function PainelPage() {
   const { data: jogos, error } = await supabase
     .from("jogos")
@@ -38,7 +56,7 @@ export default async function PainelPage() {
         <LogoutBtn />
       </div>
       <div className={styles.cardsGrid}>
-        {jogos.map((jogo: any) => (
+        {jogos.map((jogo: Jogo) => (
           <Link
             key={jogo.id}
             href={`/admin/painel/jogo/${jogo.id}`}
