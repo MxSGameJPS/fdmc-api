@@ -5,7 +5,7 @@ import { supabase } from "@/lib/supabaseClient";
 import LogoutBtn from "./LogoutBtn";
 
 type Jogo = {
-  id: number;
+  id: string;
   data: string;
   hora: string;
   mandante: string;
