@@ -1,3 +1,7 @@
+// Handler GET para evitar erro 405 caso GET seja feito nesta rota
+export async function GET() {
+  return new Response("Method Not Allowed", { status: 405 });
+}
 import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(request: NextRequest) {
