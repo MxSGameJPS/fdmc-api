@@ -2,11 +2,11 @@
 import Image from "next/image";
 import styles from "./login.module.css";
 import { useSearchParams } from "next/navigation";
+import { Suspense } from "react";
 
-export default function LoginPage() {
+function LoginPageContent() {
   const searchParams = useSearchParams();
   const hasError = searchParams.get("error") === "1";
-
   return (
     <div className={styles["login-bg"]}>
       <div className={styles["login-card"]}>
@@ -54,5 +54,13 @@ export default function LoginPage() {
         </form>
       </div>
     </div>
+  );
+}
+
+export default function LoginPage() {
+  return (
+    <Suspense>
+      <LoginPageContent />
+    </Suspense>
   );
 }

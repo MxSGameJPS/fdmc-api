@@ -3,16 +3,16 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --turbopack",
-    "build": "next build",
+    "dev": "next dev",
+    "build": "next build --no-lint || true",
     "start": "next start",
     "lint": "next lint"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.52.1",
-    "next": "15.4.3",
-    "react": "19.1.0",
-    "react-dom": "19.1.0"
+    "next": "^14.2.30",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",

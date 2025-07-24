@@ -4,7 +4,9 @@ import { supabase } from "@/lib/supabaseClient";
 export async function POST(request: Request) {
   // Extrair o id da URL
   const url = new URL(request.url);
-  const id = url.pathname.split("/").filter(Boolean).pop();
+  const pathParts = url.pathname.split("/").filter(Boolean);
+  // Pega o penúltimo segmento, que é o id do jogo
+  const id = pathParts[pathParts.length - 2];
   if (!id) {
     return NextResponse.json(
       { error: "ID do jogo não informado." },

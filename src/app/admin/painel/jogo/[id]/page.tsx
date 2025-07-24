@@ -3,7 +3,6 @@ import { notFound } from "next/navigation";
 import styles from "../../painel.module.css";
 import Image from "next/image";
 import VoltarBtn from "./VoltarBtn";
-type PageProps = { params: { id: string } };
 export default async function JogoPage({ params }: { params: { id: string } }) {
   // Buscar o jogo pelo id na tabela do Supabase
   const { data: jogo, error } = await supabase

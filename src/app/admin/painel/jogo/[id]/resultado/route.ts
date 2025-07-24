@@ -1,10 +1,12 @@
 import { NextResponse } from "next/server";
 import { supabase } from "@/lib/supabaseClient";
 
-export async function POST(
-  request: Request,
-  { params }: { params: { id: string } }
-) {
+type ParamsProps =
+  | Promise<{ params: { id: string } }>
+  | { params: { id: string } };
+export async function POST(request: Request, props: ParamsProps) {
+  const awaited = props instanceof Promise ? await props : props;
+  const { params } = awaited;
   const formData = await request.formData();
 
   // Converter corretamente os valores vindos do formData
