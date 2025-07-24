@@ -30,7 +30,7 @@ export default async function PainelPage() {
       .order("data", { ascending: true })
       .throwOnError()
       // @ts-ignore
-      .single?.({ cache: "no-store" })) ?? {};
+      .maybeSingle?.({ cache: "no-store" }) ?? {};
 
   if (error)
     return (
