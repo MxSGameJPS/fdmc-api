@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 import styles from "./painel.module.css";
 import Image from "next/image";
 import Link from "next/link";
