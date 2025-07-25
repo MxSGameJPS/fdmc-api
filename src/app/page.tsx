@@ -6,17 +6,17 @@ export default function Home() {
       <h1
         style={{
           textAlign: "center",
-          fontSize: 32,
-          fontWeight: 800,
-          marginBottom: 32,
+          fontSize: 36,
+          fontWeight: 900,
           color: "#222",
+          marginBottom: 24,
         }}
       >
-        Bem-vindo à API FDMC
+        API FDMC - Documentação
       </h1>
       <div
         style={{
-          maxWidth: 600,
+          maxWidth: 800,
           margin: "0 auto",
           background: "#fff",
           borderRadius: 12,
@@ -26,54 +26,64 @@ export default function Home() {
       >
         <h2
           style={{
-            fontSize: 20,
-            fontWeight: 700,
-            marginBottom: 16,
+            fontSize: 24,
+            fontWeight: 800,
             color: "#222",
+            marginBottom: 24,
           }}
         >
-          Endpoints disponíveis:
+          Endpoints
         </h2>
-        <ul
-          style={{
-            marginBottom: 32,
-            color: "#222",
-            fontSize: 16,
-            fontWeight: 500,
-          }}
-        >
-          <li>
-            <code style={{ color: "#222", fontWeight: 700 }}>/api/jogos</code> —
-            Lista de jogos
-          </li>
-          <li>
-            <code style={{ color: "#222", fontWeight: 700 }}>/api/elenco</code>{" "}
-            — Elenco do Botafogo
-          </li>
-          <li>
-            <code style={{ color: "#222", fontWeight: 700 }}>
+        <div style={{ marginBottom: 32 }}>
+          <div style={{ marginBottom: 24 }}>
+            <div style={{ fontWeight: 700, fontSize: 18, color: "#005a9c" }}>
+              /api/jogos
+            </div>
+            <div style={{ color: "#444", marginBottom: 4 }}>
+              Lista completa de jogos (todos os campos)
+            </div>
+            <div style={{ fontSize: 14, color: "#888" }}>
+              Método: <b>GET</b>
+            </div>
+          </div>
+          <div style={{ marginBottom: 24 }}>
+            <div style={{ fontWeight: 700, fontSize: 18, color: "#005a9c" }}>
               /api/resultados
-            </code>{" "}
-            — Resultados dos jogos
-          </li>
-        </ul>
-        <Link href="/admin/login">
-          <button
-            style={{
-              background: "#ffd700",
-              color: "#000",
-              fontWeight: 700,
-              fontSize: 18,
-              border: "none",
-              borderRadius: 8,
-              padding: "12px 32px",
-              cursor: "pointer",
-              boxShadow: "0 2px 8px #0002",
-            }}
-          >
-            Login Painel
-          </button>
-        </Link>
+            </div>
+            <div style={{ color: "#444", marginBottom: 4 }}>
+              Resultados dos jogos (apenas campos relevantes para o app: placar,
+              gols, melhor e pior jogador)
+            </div>
+            <div style={{ fontSize: 14, color: "#888" }}>
+              Método: <b>GET</b>
+            </div>
+            <div style={{ fontSize: 13, color: "#888", marginTop: 2 }}>
+              <b>Retorna:</b> id, mandante, visitante, resultado_mandante,
+              resultado_visitante, gols_marcados, melhor_jogador, pior_jogador,
+              data, hora, campeonato, rodada, local, escudo_mandante,
+              escudo_visitante
+            </div>
+          </div>
+        </div>
+        <div style={{ margin: "32px 0 0 0", textAlign: "center" }}>
+          <Link href="/admin/login">
+            <button
+              style={{
+                background: "#ffd700",
+                color: "#000",
+                fontWeight: 700,
+                fontSize: 18,
+                border: "none",
+                borderRadius: 8,
+                padding: "12px 32px",
+                cursor: "pointer",
+                boxShadow: "0 2px 8px #0002",
+              }}
+            >
+              Login Painel
+            </button>
+          </Link>
+        </div>
       </div>
     </div>
   );
