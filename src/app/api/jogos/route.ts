@@ -2,14 +2,24 @@ import { NextResponse } from "next/server";
 import { supabase } from "@/lib/supabaseClient";
 
 export async function GET() {
-  const { data, error } = await supabase
+  const { data: jogos, error: jogosError } = await supabase
     .from("jogos")
     .select("*")
     .order("data", { ascending: true });
 
-  if (error) {
-    return NextResponse.json({ error: error.message }, { status: 500 });
+  const { data: elenco, error: elencoError } = await supabase
+    .from("elenco")
+    .select("*")
+    .order("nome", { ascending: true });
+
+  if (jogosError || elencoError) {
+    return NextResponse.json(
+      {
+        error: jogosError?.message || elencoError?.message,
+      },
+      { status: 500 }
+    );
   }
 
-  return NextResponse.json(data);
+  return NextResponse.json({ jogos, elenco });
 }
