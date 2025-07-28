@@ -9,17 +9,9 @@ export async function GET() {
     )
     .order("data", { ascending: true });
 
-  const { data: elenco, error: elencoError } = await supabase
-    .from("elenco")
-    .select("id, nome, posicao")
-    .order("id", { ascending: true });
-
-  if (jogosError || elencoError) {
-    return NextResponse.json(
-      { error: jogosError?.message || elencoError?.message },
-      { status: 500 }
-    );
+  if (jogosError) {
+    return NextResponse.json({ error: jogosError.message }, { status: 500 });
   }
 
-  return NextResponse.json({ jogos, elenco });
+  return NextResponse.json(jogos);
 }
