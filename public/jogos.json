@@ -35,18 +35,7 @@
       { "posicao": "Atacante", "nome": "Arthur Cabral" }
     ]
   },
-  "jogos": [
-    {
-      "data": "2025-07-26",
-      "hora": "18:30",
-      "mandante": "Botafogo",
-      "visitante": "Corinthians",
-      "campeonato": "Campeonato Brasileiro",
-      "rodada": "Não informada",
-      "escudo_mandante": "https://logodetimes.com/times/botafogo/logo-botafogo-256.png",
-      "escudo_visitante": "https://logodetimes.com/times/corinthians/logo-corinthians-256.png",
-      "local": "Estádio Nilton Santos"
-    },
+  "jogos": [   
     {
       "data": "2025-07-29",
       "hora": "19:00",
@@ -82,7 +71,7 @@
     },
     {
       "data": "2025-08-10",
-      "hora": "A definir",
+      "hora": "20:30",
       "mandante": "Fortaleza",
       "visitante": "Botafogo",
       "campeonato": "Campeonato Brasileiro",
